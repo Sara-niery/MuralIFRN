@@ -8,6 +8,9 @@ from .forms import CoordenacaoForm,UsuarioForm,AvisoForm
 def home(request):
     return render(request, 'index.html')
 
+def recentes(request):
+    return render(request, 'recentes.html')
+
 @login_required
 def perfil(request):
     return render(request, 'perfil.html')
@@ -41,53 +44,122 @@ def registro(request):
     }
     return render(request, 'registro.html', contexto)
 
-#def listar_usuario(request):
-    #usuarios = Usuario.objects.all()
-    #contexto = {
-     #   'todos_usuarios' : usuarios
-    #}
-    #return render(request,'cruds\usuarios.html',contexto)
-
-#def cadastrar_usuario(request):
- #   form = UsuarioForm(request.POST or None,request.FILES or None)
-  #  if form.is_valid():
-   #     form.save()
-    #    return redirect('listar_usuario')
-
-    #contexto = {
-     #   'form_usuario': form
-    #}
-    #return render(request,'cruds\usuario_cadastrar.html', contexto)
-
-#def atualizar_usuario(request, id):
-  #  meus_usuarios = Usuario.objects.get(id=id)
+def listar_usuario(request):
+    usuarios = Usuario.objects.all()
     
-   # form = UsuarioForm(request.POST or None, request.FILES or None, instance = meus_usuarios)
+    contexto = {
+        'todos_usuarios' : usuarios
+    }
+    return render(request,'cruds\\usuarios.html', contexto)
+
+def cadastrar_usuario(request):
+    form = UsuarioForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_usuario')
+
+    contexto = {
+       'form_usuario': form
+    }
+    return render(request,'cruds\\usuario_cadastrar.html', contexto)
+
+def atualizar_usuario(request, id):
+    meus_usuarios = Usuario.objects.get(id=id)
     
-   # if form.is_valid():
-      #  form.save()
-     #   return redirect('listar_usuario')
+    form = UsuarioForm(request.POST or None, request.FILES or None, instance = meus_usuarios)
+    
+    if form.is_valid():
+         form.save()
+         return redirect('listar_usuario')
    
-    #contexto = {
-    #    "form_usuario": form
-   # }
-  #  return render(request, 'cruds\usuario_editar.html', contexto )      
+    contexto = {
+        "form_usuario": form
+    }
+    return render(request, 'cruds\\usuario_editar.html', contexto )      
 
-def deletar_musica(request, id):
+def deletar_usuario(request, id):
     meus_usuarios = Usuario.objects.get(id=id)
     meus_usuarios.delete()
     return redirect('listar_usuario')
 
-def listar_coord(request):
+
+
+def listar_coordenacao(request):
     coord = Coordenacao.objects.all()
-    context = {
+    
+    contexto = {
         'todas_coord' : coord
     }
-    return render(request,'cruds\coordenacao.html',context)
+    return render(request,'cruds\\coordenacao.html', contexto)
+
+def cadastrar_coordenacao(request):
+    form = CoordenacaoForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_coordenacao')
+
+    contexto = {
+       'form_coordenacao': form
+    }
+    return render(request,'cruds\\coordenacao_cadastrar.html', contexto)
+
+def atualizar_coordenacao(request, id):
+    minhas_coordenacoes = Coordenacao.objects.get(id=id)
+    
+    form = CoordenacaoForm(request.POST or None, request.FILES or None, instance = minhas_coordenacoes)
+    
+    if form.is_valid():
+         form.save()
+         return redirect('listar_coordenacao')
+   
+    contexto = {
+        "form_coordenacao": form
+    }
+    return render(request, 'cruds\\coordenacao_editar.html', contexto )      
+
+def deletar_coordenacao(request, id):
+    minhas_coordenacoes = Coordenacao.objects.get(id=id)
+    minhas_coordenacoes.delete()
+    return redirect('listar_coordenacao')
+
+
 
 def listar_avisos(request):
     avisos = Aviso.objects.all()
     context = {
         'todos_avisos' : avisos
     }
-    return render(request,'cruds\avisos.html',context)
+    return render(request,'cruds\\avisos.html',context)
+
+def cadastrar_avisos(request):
+    form = AvisoForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('listar_aviso')
+
+    contexto = {
+       'form_aviso': form
+    }
+    return render(request,'cruds\\aviso_cadastrar.html', contexto)
+
+def atualizar_aviso(request, id):
+    meus_avisos = Aviso.objects.get(id=id)
+    
+    form = AvisoForm(request.POST or None, request.FILES or None, instance = meus_avisos)
+    
+    if form.is_valid():
+         form.save()
+         return redirect('listar_aviso')
+   
+    contexto = {
+        "form_aviso": form
+    }
+    return render(request, 'cruds\\aviso_editar.html', contexto )      
+
+def deletar_aviso(request, id):
+    meus_avisos = Aviso.objects.get(id=id)
+    meus_avisos.delete()
+    return redirect('listar_aviso')
+
+
+
