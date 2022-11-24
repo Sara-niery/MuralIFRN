@@ -30,17 +30,17 @@ urlpatterns = [
     path('logout/', desconectar,name='logout'),
     path('registro/', registro, name='registro'),
 
-    path('listar_usuario',listar_usuario, name='listar_usuario'),
+    path('usuario',listar_usuario, name='listar_usuario'),
     path('cadastrar_usuario/',cadastrar_usuario,name='cadastar_usuario'),
     path('atualizar_usuario/',atualizar_usuario,name='atualizar_usuario'),
     path('deletar_usuario', deletar_usuario,name='deletar_usuario'),
 
-    path('listar_aviso/',listar_avisos,name='listar_aviso'),
+    path('aviso/',listar_avisos,name='listar_aviso'),
     path('cadastrar_aviso/',cadastrar_avisos,name='cadastar_aviso'),
     path('atualizar_usuario/',atualizar_aviso,name='atualizar_aviso'),
     path('deletar_usuario/',deletar_aviso,name='deletar_aviso'),
 
-    path('listar_coord',listar_coordenacao,name='listar_coord'),
+    path('coord',listar_coordenacao,name='listar_coord'),
     path('cadastar_coord',cadastrar_coordenacao ,name='cadastar_coord'),
     path('atualizar_coord',atualizar_coordenacao,name='atualizar_coord'),
     path('deletar_coord',deletar_coordenacao, name='deletar_coord'),

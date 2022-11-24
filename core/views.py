@@ -44,6 +44,8 @@ def registro(request):
     }
     return render(request, 'registro.html', contexto)
 
+
+
 def listar_usuario(request):
     usuarios = Usuario.objects.all()
     

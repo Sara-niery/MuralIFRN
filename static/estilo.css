@@ -1,0 +1,55 @@
+main {
+    margin-top: 56px;
+    background-image: url();
+    background-color: #EEEEEE;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+}
+
+#caixaB {
+    display: flex;
+
+
+}
+
+#caixaC {
+    display: flex;
+
+}
+
+.caixas {
+    width: 400px;
+    border: 0px solid;
+    border-radius: 5px;
+    text-align: center;
+    margin: 30px auto;
+    border: 1px solid white;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.253);
+}
+
+.img {
+    height: 50px;
+    width: 50;
+
+}
+
+#imgElogo {
+    display: flex;
+    padding-top: 20px;
+
+}
+
+#imglogo {
+    height: 130px;
+    width: 130px;
+}
+
+#linha {
+    color: #68B92C;
+}
