@@ -142,7 +142,7 @@ def cadastrar_avisos(request):
     contexto = {
        'form_aviso': form
     }
-    return render(request,'cruds\\aviso_cadastrar.html', contexto)
+    return render(request,'cruds/avisos_cadastrar.html', contexto)
 
 def atualizar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)

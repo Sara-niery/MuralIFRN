@@ -1,3 +1,34 @@
-<html>
-    
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
+    <title>Nossos clientes</title>
+    <style>
+        b {
+            color: #fff;
+        }
+
+      </style>
+</head>
+<body>
+    <h1>NOSSOS CLIENTES</h1>
+    <a href="{% url 'avisos_cadastrar' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
+
+    {% for cliente in todos_clientes %}
+            <p><b>Nome:</b> {{ cliente.nome2 }} </p>
+            <p><b>CPF:</b> {{ cliente.cpf }}</p>
+            <a href="{% url 'avisos_editar' aviso.id %}" class="btn-voltar"> Editar </a>
+            <a href="{% url 'deletar_aviso' aviso.id %}" class="btn-voltar"> Excluir </a>
+ 
+        {% empty %}
+            <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+        {% endfor %}
+
+    <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
+</body>
 </html>

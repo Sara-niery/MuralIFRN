@@ -7,10 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
-    <title>Nossos Usuários</title>
+    <title>Nossos clientes</title>
+    <style>
+        b {
+            color: #fff;
+        }
+
+      </style>
 </head>
 <body>
+    <h1>NOSSOS CLIENTES</h1>
+    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-verde">CADASTRAR UM NOVO CLIENTE</a>
 
-    <h1>Usuário</h1>
+    {% for cliente in todos_clientes %}
+            <p><b>Nome:</b> {{ cliente.nome2 }} </p>
+            <p><b>CPF:</b> {{ cliente.cpf }}</p>
+            <a href="{% url 'atualizar_usuario' usuario.id %}" class="btn-voltar"> Editar </a>
+            <a href="{% url 'deletar_usuario' usuario.id %}" class="btn-voltar"> Excluir </a>
+ 
+        {% empty %}
+            <p><b>AINDA NÃO TEMOS CLIENTES CADASTRADOS</b></p>
+        {% endfor %}
+
+    <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
 </body>
 </html>
