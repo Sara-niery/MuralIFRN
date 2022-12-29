@@ -17,12 +17,11 @@
 </head>
 <body>
     <h1>NOSSOS CLIENTES</h1>
-    <a href="{% url 'avisos_cadastrar' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
+    <a href="{% url 'cadastrar_avisos' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
 
-    {% for cliente in todos_clientes %}
-            <p><b>Nome:</b> {{ cliente.nome2 }} </p>
-            <p><b>CPF:</b> {{ cliente.cpf }}</p>
-            <a href="{% url 'avisos_editar' aviso.id %}" class="btn-voltar"> Editar </a>
+    {% for aviso in todos_avisos %}
+            <p><b>Título:</b> {{ aviso.titulo }} </p>
+            <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn-voltar"> Editar </a>
             <a href="{% url 'deletar_aviso' aviso.id %}" class="btn-voltar"> Excluir </a>
  
         {% empty %}

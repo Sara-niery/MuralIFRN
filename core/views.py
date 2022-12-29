@@ -136,7 +136,9 @@ def listar_avisos(request):
 def cadastrar_avisos(request):
     form = AvisoForm(request.POST or None,request.FILES or None)
     if form.is_valid():
-        form.save()
+        aviso = form.save(commit=False)
+        aviso.usuario = request.user
+        aviso.save()
         return redirect('listar_aviso')
 
     contexto = {

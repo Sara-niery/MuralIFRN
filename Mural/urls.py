@@ -23,7 +23,7 @@ from core.views import autenticar,desconectar, registro, perfil
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index',home, name='home'),
+    path('',home, name='home'),
     path('recentes/',recentes,name= 'recente'),
     path('perfil/', perfil, name='perfil'),
     path('login/', autenticar,name='login'),
