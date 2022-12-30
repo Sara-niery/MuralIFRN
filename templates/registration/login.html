@@ -7,12 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>pagina de login</h2>
+    <h2>Página de login</h2>
     <form method="post">
         {% csrf_token %}
         <p>Usuário: <input type="text" name="usuario" ></p>
         <p>Senha: <input type="text" name="senha"></p>
         <p><input type="submit" value="Autenticar"></p>
     </form>
+    <a href="{% url  'home'%}"><button>Sair</button></a>
 </body>
 </html>

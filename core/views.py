@@ -53,7 +53,7 @@ def listar_usuario(request):
     contexto = {
         'todos_usuarios' : usuarios
     }
-    return render(request,'cruds\\usuarios.html', contexto)
+    return render(request,'cruds/usuarios.html', contexto)
 
 def cadastrar_usuario(request):
     form = UsuarioForm(request.POST or None,request.FILES or None)
@@ -64,7 +64,7 @@ def cadastrar_usuario(request):
     contexto = {
        'form_usuario': form
     }
-    return render(request,'cruds\\usuario_cadastrar.html', contexto)
+    return render(request,'cruds/usuario_cadastrar.html', contexto)
 
 def atualizar_usuario(request, id):
     meus_usuarios = Usuario.objects.get(id=id)
@@ -118,7 +118,7 @@ def atualizar_coordenacao(request, id):
     contexto = {
         "form_coordenacao": form
     }
-    return render(request, 'cruds\\coordenacao_editar.html', contexto )      
+    return render(request, 'cruds/coordenacao_editar.html', contexto )      
 
 def deletar_coordenacao(request, id):
     minhas_coordenacoes = Coordenacao.objects.get(id=id)
@@ -132,18 +132,20 @@ def listar_avisos(request):
     context = {
         'todos_avisos' : avisos
     }
-    return render(request,'cruds\\avisos.html',context)
+    return render(request,'cruds/avisos.html',context)
 
 def cadastrar_avisos(request):
     form = AvisoForm(request.POST or None,request.FILES or None)
     if form.is_valid():
-        form.save()
+        aviso = form.save(commit=False)
+        aviso.usuario = request.user
+        aviso.save()
         return redirect('listar_aviso')
 
     contexto = {
        'form_aviso': form
     }
-    return render(request,'cruds\\aviso_cadastrar.html', contexto)
+    return render(request,'cruds/avisos_cadastrar.html', contexto)
 
 def atualizar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)
@@ -157,7 +159,7 @@ def atualizar_aviso(request, id):
     contexto = {
         "form_aviso": form
     }
-    return render(request, 'cruds\\aviso_editar.html', contexto )      
+    return render(request, 'cruds/aviso_editar.html', contexto )      
 
 def deletar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)
