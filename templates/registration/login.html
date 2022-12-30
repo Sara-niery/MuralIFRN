@@ -12,8 +12,9 @@
         {% csrf_token %}
         <p>Usuário: <input type="text" name="usuario" ></p>
         <p>Senha: <input type="text" name="senha"></p>
-        <p><input type="submit" value="Autenticar"></p>
+        <p><input type="submit" value="login"></p>
     </form>
+    <a href="{% url 'cadastrar_usuario'%}"><button>cadastre-se</button></a>
     <a href="{% url  'home'%}"><button>Sair</button></a>
 </body>
 </html>

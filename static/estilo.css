@@ -19,12 +19,11 @@ footer {
 
 #caixaC {
     display: flex;
-
 }
 
 .caixas {
-    width: 400px;
-    border: 0px solid;
+    width: 90%;
+    border: 0px solid black;
     border-radius: 5px;
     text-align: center;
     margin: 30px auto;

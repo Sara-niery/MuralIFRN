@@ -10,23 +10,23 @@
     <title>Nossos clientes</title>
     <style>
         b {
-            color: #fff;
+            color: #000;
         }
 
       </style>
 </head>
 <body>
-    <h1>NOSSOS CLIENTES</h1>
-    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-verde">CADASTRAR UM NOVO CLIENTE</a>
+    <h1>NOSSOS USUÁRIOS</h1>
+    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-verde">CADASTRAR UM NOVO USUÁRIO</a>
 
-    {% for cliente in todos_clientes %}
-            <p><b>Nome:</b> {{ cliente.nome2 }} </p>
-            <p><b>CPF:</b> {{ cliente.cpf }}</p>
+    {% for usuario in todos_usuario %}
+            <p><b>Nome:</b> {{ Usuario.nome }} </p>
+            <p><b>Cargo:</b> {{ Usuario.cargo }}</p>
             <a href="{% url 'atualizar_usuario' usuario.id %}" class="btn-voltar"> Editar </a>
             <a href="{% url 'deletar_usuario' usuario.id %}" class="btn-voltar"> Excluir </a>
  
         {% empty %}
-            <p><b>AINDA NÃO TEMOS CLIENTES CADASTRADOS</b></p>
+            <p><b>AINDA NÃO TEMOS USUÁRIOS CADASTRADOS</b></p>
         {% endfor %}
 
     <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>

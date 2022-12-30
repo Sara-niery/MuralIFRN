@@ -37,8 +37,13 @@
                                 <a class="nav-link" href="{% url 'recente' %}">Recentes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                                <a class="nav-link" href="{% url 'login' %}">Login</a>
                             </li>
+                            {% if not user.is_authenticated %}
+                            <p><a href="{% url 'cadastrar_usuario' %}">cadastre um novo usuario</a></p>
+
+                            {% endif %}
+                        
                             <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -65,18 +70,56 @@
     </header>
 
     <main>
+        <h1>NOSSOS AVISOS</h1>
+        <a href="{% url 'cadastrar_aviso' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
+    
+        {% for aviso in todos_avisos %}
+                <p><b>Título:</b> {{ aviso.titulo }} </p>
+                <p><b>autor:</b> {{ aviso.usuario.nome }} </p>
+                <P><img src="{{musica.capa.url}}" alt="" width="" height="100px"/></P>
+                <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn-voltar"> Editar </a>
+                <a href="{% url 'deletar_aviso' aviso.id %}" class="btn-voltar"> Excluir </a>
+     
+            {% empty %}
+                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+            {% endfor %}
+    
+        <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
         <div id="imgElogo">
             <img id="imglogo" src="{% static 'ifrn.png' %}">
             <h3>Instituto Federal de Educação,<br> Ciência e Tecnologia do <br>Rio Grande do Norte</h3>
         </div>
-        <hr id="linha">
-        <div id="caixaB">
+        <hr id="linha" >
+        <div class="row">
+           
+            {% for aviso in todos_avisos %}
+                <div class="col-12 col-lg-4">
+                    <div class="caixas">
+                        <img src="media/{{aviso.imagem}}" alt="" class="img-fluid">
+                        <hr>
+                        <H3>{{ aviso.titulo }}</H3>
+                        <P>{{aviso.descricao}}</P>
+                        <h5>Responsável: {{ aviso.usuario.nome }}</h5>
+                    </div>
+                </div>
+            {% empty %}
+                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+            {% endfor %}
+
+           
+            
+           
+        </div>
+
+
+        <!-- <div id="caixaB">
             <div class="caixas">
                 <img src="{% static 'images.jpg' %}">
                 <hr>
                 <H3>INFORMAÇÃO 1</H3>
                 <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, autem non modi, quod placeat qui ea consequuntur in eos harum est nam obcaecati sapiente repellendus natus! Repellat ipsam fugit provident.</P>
             </div>
+            
             <div class="caixas">
                 <img src="{% static 'images.jpg' %}">
                 <hr> 
@@ -109,7 +152,7 @@
                 <H3>INFORMAÇÃO 7 </H3>
                 <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, expedita unde! Assumenda quasi, possimus asperiores dignissimos sed ducimus eius eligendi odio facere commodi itaque iste provident enim deserunt voluptas. Facilis.</P>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <footer class="footer">

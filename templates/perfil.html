@@ -65,8 +65,16 @@
     </header>
 </header>
 
-<main>
-    <a href="{% url 'logout' %}">sair</a>
-</main>
+<body>
+    <main>
+
+        <a href="{% url 'logout' %}">sair</a>
+    </main>
+    <p><a href="{% url 'cadastrar_aviso'%}">cadastre um novo aviso aqui</a></p>
+    {% if user.is_superuser %}
+    <p><a href="{% url 'listar_usuario' %}">Usuarios</a></p>
+    <p><a href="{% url 'cadastrar_usuario' %}">cadastre um novo usuário</a></p>
+    {% endif %}
+</body>
 
 </html>

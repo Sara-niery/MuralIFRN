@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 {% load widget_tweaks %}
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +16,11 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_usuario.as_p }}
+        <p>É um admim?
+            <input type="radio" name="tipo" value="admin" />Sim<br />
+        </p>
         <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
     </form>
-    <p><a href="{% url 'usuario' %}" class="btn-voltar">Voltar</a></p>
+    <p><a href="{% url 'listar_usuario' %}" class="btn-voltar">Voltar</a></p>
 </body>
 </html>

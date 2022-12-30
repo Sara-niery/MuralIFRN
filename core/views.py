@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Permission
-from .models import Usuario,Coordenacao,Aviso
-from .forms import CoordenacaoForm,UsuarioForm,AvisoForm
+
+from .models import Usuario,Aviso
+from .forms import UsuarioForm,AvisoForm
 
 def home(request):
-    return render(request, 'index.html')
+    avisos = Aviso.objects.all()
+    context = {
+        'todos_avisos' : avisos
+    }
+    return render(request, 'index.html',context)
 
 def recentes(request):
     return render(request, 'recentes.html')
@@ -35,18 +40,9 @@ def desconectar(request):
     logout(request)
     return redirect('home')
 
-def registro(request):
-    form = UsuarioForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('login')
-    contexto = {
-        'form' : form
-    }
-    return render(request, 'registro.html', contexto)
 
-
-
+@login_required
+@permission_required('core.admin')
 def listar_usuario(request):
     usuarios = Usuario.objects.all()
     
@@ -55,16 +51,22 @@ def listar_usuario(request):
     }
     return render(request,'cruds/usuarios.html', contexto)
 
-def cadastrar_usuario(request):
-    form = UsuarioForm(request.POST or None,request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return redirect('listar_usuario')
 
+def cadastrar_usuario(request):
+    form = UsuarioForm(request.POST or None)
+    if form.is_valid():
+        usuario = form.save()
+        if request.POST.get('tipo', False):
+            tipo = request.POST['tipo'] 
+            if tipo == 'admin':
+                usuario.is_superuser = True
+                usuario.save()
+        return redirect('login')
     contexto = {
-       'form_usuario': form
+        'form_usuario' : form
     }
     return render(request,'cruds/usuario_cadastrar.html', contexto)
+
 
 def atualizar_usuario(request, id):
     meus_usuarios = Usuario.objects.get(id=id)
@@ -78,7 +80,8 @@ def atualizar_usuario(request, id):
     contexto = {
         "form_usuario": form
     }
-    return render(request, 'cruds\\usuario_editar.html', contexto )      
+    return render(request, 'cruds/usuario_editar.html', contexto )      
+
 
 def deletar_usuario(request, id):
     meus_usuarios = Usuario.objects.get(id=id)
@@ -86,55 +89,16 @@ def deletar_usuario(request, id):
     return redirect('listar_usuario')
 
 
-
-def listar_coordenacao(request):
-    coord = Coordenacao.objects.all()
-    
-    contexto = {
-        'todas_coord' : coord
-    }
-    return render(request,'cruds\\coordenacao.html', contexto)
-
-def cadastrar_coordenacao(request):
-    form = CoordenacaoForm(request.POST or None,request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return redirect('listar_coordenacao')
-
-    contexto = {
-       'form_coordenacao': form
-    }
-    return render(request,'cruds\\coordenacao_cadastrar.html', contexto)
-
-def atualizar_coordenacao(request, id):
-    minhas_coordenacoes = Coordenacao.objects.get(id=id)
-    
-    form = CoordenacaoForm(request.POST or None, request.FILES or None, instance = minhas_coordenacoes)
-    
-    if form.is_valid():
-         form.save()
-         return redirect('listar_coordenacao')
-   
-    contexto = {
-        "form_coordenacao": form
-    }
-    return render(request, 'cruds/coordenacao_editar.html', contexto )      
-
-def deletar_coordenacao(request, id):
-    minhas_coordenacoes = Coordenacao.objects.get(id=id)
-    minhas_coordenacoes.delete()
-    return redirect('listar_coordenacao')
-
-
-
-def listar_avisos(request):
+@login_required
+def listar_aviso(request):
     avisos = Aviso.objects.all()
     context = {
         'todos_avisos' : avisos
     }
     return render(request,'cruds/avisos.html',context)
 
-def cadastrar_avisos(request):
+@login_required
+def cadastrar_aviso(request):
     form = AvisoForm(request.POST or None,request.FILES or None)
     if form.is_valid():
         aviso = form.save(commit=False)
@@ -146,7 +110,7 @@ def cadastrar_avisos(request):
        'form_aviso': form
     }
     return render(request,'cruds/avisos_cadastrar.html', contexto)
-
+@login_required
 def atualizar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)
     
@@ -160,7 +124,7 @@ def atualizar_aviso(request, id):
         "form_aviso": form
     }
     return render(request, 'cruds/aviso_editar.html', contexto )      
-
+@login_required
 def deletar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)
     meus_avisos.delete()
