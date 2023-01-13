@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +35,6 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'recente' %}">Recentes</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
                             </li>
                             <!-- <li class="nav-item dropdown">
@@ -70,10 +68,11 @@
 
         <a href="{% url 'logout' %}">sair</a>
     </main>
-    <p><a href="{% url 'cadastrar_aviso'%}">cadastre um novo aviso aqui</a></p>
+    <button><a href="{% url 'cadastrar_aviso'%}">cadastre um novo aviso aqui</a></button>
+
     {% if user.is_superuser %}
-    <p><a href="{% url 'listar_usuario' %}">Usuarios</a></p>
-    <p><a href="{% url 'cadastrar_usuario' %}">cadastre um novo usuário</a></p>
+    <button><a href="{% url 'listar_usuario' %}">Usuarios</a></button>
+    <button><a href="{% url 'cadastrar_usuario' %}">cadastre um novo usuário</a></button>
     {% endif %}
 </body>
 

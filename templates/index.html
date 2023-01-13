@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +35,6 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'recente' %}">Recentes</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'login' %}">Login</a>
                             </li>
                             {% if not user.is_authenticated %}
@@ -70,21 +68,7 @@
     </header>
 
     <main>
-        <h1>NOSSOS AVISOS</h1>
-        <a href="{% url 'cadastrar_aviso' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
-    
-        {% for aviso in todos_avisos %}
-                <p><b>Título:</b> {{ aviso.titulo }} </p>
-                <p><b>autor:</b> {{ aviso.usuario.nome }} </p>
-                <P><img src="{{musica.capa.url}}" alt="" width="" height="100px"/></P>
-                <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn-voltar"> Editar </a>
-                <a href="{% url 'deletar_aviso' aviso.id %}" class="btn-voltar"> Excluir </a>
-     
-            {% empty %}
-                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
-            {% endfor %}
-    
-        <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
+
         <div id="imgElogo">
             <img id="imglogo" src="{% static 'ifrn.png' %}">
             <h3>Instituto Federal de Educação,<br> Ciência e Tecnologia do <br>Rio Grande do Norte</h3>
