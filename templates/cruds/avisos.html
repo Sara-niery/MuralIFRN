@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'estilo.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{% static 'forms.css' %}" media="screen" />s">
     <title>Nossos clientes</title>
     <style>
         b {
@@ -17,7 +18,7 @@
 </head>
 <body>
     <h1>NOSSOS AVISOS</h1>
-    <a href="{% url 'cadastrar_avisos' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
+    <a href="{% url 'cadastrar_aviso' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
 
     {% for aviso in todos_avisos %}
             <p><b>Título:</b> {{ aviso.titulo }} </p>

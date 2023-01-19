@@ -91,7 +91,7 @@ def deletar_usuario(request, id):
 
 @login_required
 def listar_aviso(request):
-    avisos = Aviso.objects.all()
+    avisos = Aviso.objects.filter(usuario=request.user)
     context = {
         'todos_avisos' : avisos
     }
@@ -129,6 +129,3 @@ def deletar_aviso(request, id):
     meus_avisos = Aviso.objects.get(id=id)
     meus_avisos.delete()
     return redirect('listar_aviso')
-
-
-

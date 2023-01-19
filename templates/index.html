@@ -35,27 +35,14 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                <a class="nav-link" href="{% url 'login' %}"><button class="btn btn-success" >login</button></a>
                             </li>
-                            {% if not user.is_authenticated %}
-                            <p><a href="{% url 'cadastrar_usuario' %}">cadastre um novo usuario</a></p>
+                            {% if user.is_authenticated %}
+                            <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">cadastre um novo aviso</button></a></p>
+                            <p><a href="{% url 'logout' %}"><button class="btn btn-success" >sair</button></a></p>
 
                             {% endif %}
                         
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="">Action</a></li>
-                                    <li><a class="dropdown-item" href="">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="">Something else here</a></li>
-                                </ul>
-                            </li> -->
                         </ul>
                         <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
