@@ -16,7 +16,10 @@
     <h1>CADASTRO DOS AVISOS</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_aviso.as_p }}
+        <p>Titulo: {{ form_aviso.titulo }}</p>
+        <p>Imagem: {{ form_aviso.imagem }}</p>
+        <p>Descrição: {{ form_aviso.descrição }}</p>
+        <p>Link: {{ form_aviso.links }}</p>
         <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
     </form>
     <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
