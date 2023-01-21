@@ -7,7 +7,7 @@ class AvisoForm(ModelForm):
     imagem = forms.FileField
     class Meta:
         model = Aviso
-        fields = ['titulo','imagem','descricao','links']
+        fields = ['titulo','imagem','descricao']
 
 class UsuarioForm(UserCreationForm):
     class Meta:

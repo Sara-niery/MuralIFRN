@@ -7,29 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{% static 'forms.css' %}" media="screen" />s">
+    <link rel="stylesheet" type="text/css" href="{% static 'forms.css' %}" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Nossos clientes</title>
     <style>
         b {
             color:#000;
         }
 
+        .button {
+            -webkit-transition-duration: 0.4s; 
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+        }
       </style>
 </head>
 <body>
-    <h1>NOSSOS AVISOS</h1>
-    <a href="{% url 'cadastrar_aviso' %}" class="btn btn-verde">CADASTRAR UM NOVO AVISO</a>
-
+    <h1>SEUS AVISOS</h1>
+    <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
     {% for aviso in todos_avisos %}
             <p><b>Título:</b> {{ aviso.titulo }} </p>
             <p><b>autor:</b> {{ aviso.usuario.nome }} </p>
-            <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn-voltar"> Editar </a>
-            <a href="{% url 'deletar_aviso' aviso.id %}" class="btn-voltar"> Excluir </a>
+            <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn button button:hover" value="Editar aviso"> Editar </a>
+            <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> Excluir </a>
  
         {% empty %}
-            <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+            <p><b>VOCÊ AINDA NÃO CADASTROU NENHUM AVISO</b></p>
         {% endfor %}
 
-    <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
+    <p><a href="{% url 'home' %}" class="btn btn-success">Voltar</a></p>
 </body>
 </html>
