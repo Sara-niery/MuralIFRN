@@ -11,6 +11,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}" media="screen" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .centro {
+            text-align: center;
+        }
+    </style> 
 </head>
 
 <body>
@@ -33,12 +38,15 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
+                                <form class="d-flex mt-3" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="search">
+                                    <button class="btn btn-success" type="submit">&#128269;</button>
+        
+                                </form>
                             </li>
                             <li class="nav-item">
                                 <p><a class="nav-link" href="{% url 'login' %}"><button class="btn btn-success" >Login</button></a></p>
                             </li>
-
-                            <p><a href="{% url 'listar_aviso' %}"><button class="btn btn-success">Editar Avisos</button></a></p>
 
                             {% if user.is_superuser %}
                             <p><a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a></p>
@@ -46,17 +54,13 @@
                             {% endif %}
 
                             {% if user.is_authenticated %}
+                            <p><a href="{% url 'listar_aviso' %}"><button class="btn btn-success">Editar Avisos</button></a></p>
                             <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">Cadastrar um novo aviso</button></a></p>
                             <p><a href="{% url 'logout' %}"><button class="btn btn-success" >Sair</button></a></p>
 
                             {% endif %}
                         
                         </ul>
-                        <form class="d-flex mt-3" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="search">
-                            <button class="btn btn-success" type="submit">&#128269;</button>
-
-                        </form>
                     </div>
                 </div>
             </div>
@@ -83,7 +87,7 @@
                     </div>
                 </div>
             {% empty %}
-                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+                <p class="centro"><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
             {% endfor %}
 
            

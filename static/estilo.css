@@ -53,11 +53,10 @@ footer {
     color: #68B92C;
 }
 
-.button {
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
+.centro {
+    text-align: center;
 }
 
-.button:hover {
-    background-color: #4CAF50;
+body {
+    font-family: 'Times New Roman', Times, serif;
 }
