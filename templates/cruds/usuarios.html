@@ -16,22 +16,30 @@
             color: #000;
         }
 
+        .button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}
       </style>
 </head>
 <body>
     <h1>NOSSOS USUÁRIOS</h1>
-    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-verde">CADASTRAR UM NOVO USUÁRIO</a>
+    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">CADASTRAR UM NOVO USUÁRIO</a>
 
-    {% for usuario in todos_usuario %}
+    {% for usuario in todos_usuarios %}
             <p><b>Nome:</b> {{ Usuario.nome }} </p>
             <p><b>Cargo:</b> {{ Usuario.cargo }}</p>
-            <a href="{% url 'atualizar_usuario' usuario.id %}" class="btn-voltar"> Editar </a>
-            <a href="{% url 'deletar_usuario' usuario.id %}" class="btn-voltar"> Excluir </a>
+            <p><a href="{% url 'atualizar_usuario' usuario.id %}" class="btn button button:hover"> Editar </a>
+            <a href="{% url 'deletar_usuario' usuario.id %}" class="btn button button:hover"> Excluir </a></p>
  
         {% empty %}
             <p><b>AINDA NÃO TEMOS USUÁRIOS CADASTRADOS</b></p>
         {% endfor %}
 
-    <p><a href="{% url 'home' %}" class="btn-voltar">Voltar</a></p>
+    <p><a href="{% url 'home' %}" class="btn btn-success">Voltar</a></p>
 </body>
 </html>

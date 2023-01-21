@@ -21,11 +21,11 @@
         <div class="">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <p>Nome: {{ form_usuario.username }} </p>
+                <p>Nome: {{ form_usuario.nome }} </p>
+                <p>Usuário: {{ form_usuario.username }} </p>
                 <p>Senha: {{ form_usuario.password1 }} </p>
                 <p>Confirme a Senha: {{ form_usuario.password2 }} </p>
                 <p>Email: {{ form_usuario.email }} </p>
-                <p>Nome: {{ form_usuario.nome }} </p>
                 <p>Cargo: {{ form_usuario.cargo }} </p>
                 <p>É um admim?
                     <input type="radio" name="tipo" value="admin" />Sim<br />

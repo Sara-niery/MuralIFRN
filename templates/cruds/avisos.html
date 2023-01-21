@@ -28,13 +28,15 @@
 </head>
 <body>
     <h1>SEUS AVISOS</h1>
-    <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
     {% for aviso in todos_avisos %}
             <p><b>Título:</b> {{ aviso.titulo }} </p>
             <p><b>autor:</b> {{ aviso.usuario.nome }} </p>
             <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn button button:hover" value="Editar aviso"> Editar </a>
             <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> Excluir </a>
- 
+
+            <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
+
+
         {% empty %}
             <p><b>VOCÊ AINDA NÃO CADASTROU NENHUM AVISO</b></p>
         {% endfor %}

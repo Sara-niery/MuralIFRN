@@ -39,7 +39,7 @@
                     </div>
                 </div>
             {% empty %}
-                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+                <p><b>VOCÊ AINDA NÃO CADASTROU NENHUM AVISO</b></p>
             {% endfor %}
 
            
@@ -47,14 +47,17 @@
            
         </div>
   
+        <p><a href="{% url 'cadastrar_aviso'%}" class="btn btn-success">Cadastre um novo aviso</a></p>
 
-        <p><a href="{% url 'logout' %}"><button class="btn btn-success" >Página Inicial</button></a></p>
+        <p><a href="{% url 'home' %}"><button class="btn btn-success" >Página Inicial</button></a></p>
     </main>
-    <button class="btn btn-success button"><a href="{% url 'cadastrar_aviso'%}">Cadastre um novo aviso</a></button>
+
     {% if user.is_superuser %}
-    <button class="btn-success"><a href="{% url 'listar_usuario' %}">Ver Usuarios</a></button>
-    <button class="btn btn-success"><a href="{% url 'cadastrar_usuario' %}">Cadastre um novo usuário</a></button>
+    <a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a>
+    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">Cadastre um novo usuário</a></button>
     {% endif %}
+
+
 </body>
 
 </html>

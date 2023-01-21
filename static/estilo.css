@@ -52,3 +52,12 @@ footer {
 #linha {
     color: #68B92C;
 }
+
+.button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}

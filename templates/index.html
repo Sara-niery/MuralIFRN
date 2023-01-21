@@ -40,6 +40,11 @@
 
                             <p><a href="{% url 'listar_aviso' %}"><button class="btn btn-success">Editar Avisos</button></a></p>
 
+                            {% if user.is_superuser %}
+                            <p><a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a></p>
+                            <p><a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">Cadastre um novo usuário</a></p>
+                            {% endif %}
+
                             {% if user.is_authenticated %}
                             <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">Cadastrar um novo aviso</button></a></p>
                             <p><a href="{% url 'logout' %}"><button class="btn btn-success" >Sair</button></a></p>
