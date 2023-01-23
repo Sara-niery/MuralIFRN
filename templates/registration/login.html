@@ -26,7 +26,9 @@
 
         .button:hover {
             background-color: #4CAF50;
+            color: white;
         }
+        
     </style>
 </head>
 
@@ -36,8 +38,6 @@
             <nav class="navbar navbar-dark bg-dark fixed-top">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{%url 'home' %}">Mural IFRN</a>
-                    <a href="{% url 'home' %}" class="btn button button:hover" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">Voltar</a>
             </nav>
         </header>
     </header>
@@ -48,11 +48,13 @@
             <form method="post">
                 {% csrf_token %}
                 <p>Usuário: <input type="text" name="usuario" required></p>
-                <p>Senha: <input type="text" name="senha" required></p>
+                <p>Senha: <input type="password" name="senha" required></p>
                 <p><input class="btn btn-success" type="submit" value="Login"></p>
             </form>
         </div>
-        <a href="{% url 'cadastrar_usuario'%}"><button class="btn btn-success">Cadastre-se</button></a>
+        <p><a href="{% url 'cadastrar_usuario'%}"><button class="btn button button:hover">Cadastre-se</button></a>
+        <a href="{% url 'home' %}" class="btn button button:hover">Voltar</a></p>
+
 
     </main>
 </body>

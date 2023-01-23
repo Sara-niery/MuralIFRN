@@ -14,6 +14,15 @@
     <title>Editar Usuario</title>
 </head>
 <body>
+    <header>
+        <header>
+            <nav class="navbar navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{%url 'home' %}">Mural IFRN</a>
+            </nav>
+        </header>
+    </header>
+    
     <h1>ATUALIZAR</h1>
     <form method="POST" action="{% url 'atualizar_usuario' usuario.id %}"  enctype="multipart/form-data">
         {% csrf_token %}

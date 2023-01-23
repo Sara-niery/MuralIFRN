@@ -37,7 +37,7 @@
             {% for aviso in todos_avisos %}
                 <div class="col-12 col-lg-4">
                     <div class="caixas">
-                        <img src="media/{{aviso.imagem}}" alt="" class="img-fluid" >
+                        <img src="media/{{aviso.imagem}}" alt="" class="img-fluid">
                         <hr>
                         <H3>{{ aviso.titulo }}</H3>
                         <P>{{aviso.descricao}}</P>
@@ -53,17 +53,16 @@
            
         </div>
   
-        <p><a href="{% url 'cadastrar_aviso'%}" class="btn btn-success">Cadastre um novo aviso</a></p>
+        <p><a href="{% url 'cadastrar_aviso'%}" class="btn btn-success">Cadastre um novo aviso</a>
 
-        <p><a href="{% url 'home' %}"><button class="btn btn-success" >Página Inicial</button></a></p>
+        <a href="{% url 'home' %}"><button class="btn btn-success" >Página Inicial</button></a></p>
+
+        {% if user.is_superuser %}
+        <a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a>
+        <a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">Cadastre um novo usuário</a></button>
+        {% endif %}
+    
     </main>
-
-    {% if user.is_superuser %}
-    <a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a>
-    <a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">Cadastre um novo usuário</a></button>
-    {% endif %}
-
-
 </body>
 
 </html>

@@ -2,11 +2,13 @@ main {
     margin-top: 56px;
     background-image: url();
     background-color: #EEEEEE;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 80px;
+
 }
 footer {
     text-align: center;
@@ -67,4 +69,5 @@ footer {
 
 .button:hover {
     background-color: #4CAF50;
+    color: white;
 }
