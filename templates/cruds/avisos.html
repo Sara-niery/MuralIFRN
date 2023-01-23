@@ -16,6 +16,11 @@
             color:#000;
         }
 
+        body {
+            text-align: center;
+            margin-top: 80px;
+        }
+
         .button {
             -webkit-transition-duration: 0.4s; 
             transition-duration: 0.4s;
@@ -26,21 +31,34 @@
         }
       </style>
 </head>
+
+<header>
+<header>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{%url 'home' %}">Mural IFRN</a>
+            <a href="{% url 'home' %}" class="btn button button:hover" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">Voltar</a>
+                
+    </nav>
+</header>
+</header>
 <body>
     <h1>SEUS AVISOS</h1>
     {% for aviso in todos_avisos %}
             <p><b>Título:</b> {{ aviso.titulo }} </p>
-            <p><b>autor:</b> {{ aviso.usuario.nome }} </p>
-            <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn button button:hover" value="Editar aviso"> Editar </a>
-            <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> Excluir </a>
+            <p><b>Autor:</b> {{ aviso.usuario.nome }} </p>
+            <p>
+                <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn button button:hover" value="Editar aviso"> Editar </a>
+                <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> Excluir </a>
 
-            <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
-
+            </p>
 
         {% empty %}
             <p><b>VOCÊ AINDA NÃO CADASTROU NENHUM AVISO</b></p>
         {% endfor %}
 
-    <p><a href="{% url 'home' %}" class="btn btn-success">Voltar</a></p>
+    <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
+
 </body>
 </html>

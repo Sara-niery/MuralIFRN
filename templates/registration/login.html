@@ -19,19 +19,29 @@
         main {
             margin-top: 80px;
         }
+        .button {
+            -webkit-transition-duration: 0.4s; 
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">Mural IFRN</a>
-            </div>
-        </div>
-    </nav>
-</header>
-    <main>
+        <header>
+            <nav class="navbar navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{%url 'home' %}">Mural IFRN</a>
+                    <a href="{% url 'home' %}" class="btn button button:hover" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">Voltar</a>
+            </nav>
+        </header>
+    </header>
+<main>
         <h2>Página de login</h2>
 
         <div>

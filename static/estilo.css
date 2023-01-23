@@ -5,6 +5,9 @@ main {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 footer {
     text-align: center;
     height: 100px;
@@ -57,6 +60,11 @@ footer {
     text-align: center;
 }
 
-body {
-    font-family: 'Times New Roman', Times, serif;
+.button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50;
 }
