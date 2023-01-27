@@ -15,6 +15,11 @@
         .centro {
             text-align: center;
         }
+
+        .img_tamanho
+        {
+            height: 200px;
+        }
     </style> 
 </head>
 
@@ -79,7 +84,7 @@
             {% for aviso in todos_avisos %}
                 <div class="col-12 col-lg-4">
                     <div class="caixas">
-                        <img src="media/{{aviso.imagem}}" alt="" class="img-fluid">
+                        <img src="/media/{{aviso.imagem}}" alt="" class="img-fluid img_tamanho">
                         <hr>
                         <H3>{{ aviso.titulo }}</H3>
                         <P>{{aviso.descricao}}</P>
