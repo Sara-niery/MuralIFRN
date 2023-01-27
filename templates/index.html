@@ -11,13 +11,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}" media="screen" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .centro {
+            text-align: center;
+        }
+    </style> 
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Mural IFRN</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Mural IFRN</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -33,21 +38,29 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
+                                <form class="d-flex mt-3" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="search">
+                                    <button class="btn btn-success" type="submit">&#128269;</button>
+        
+                                </form>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'login' %}"><button class="btn btn-success" >login</button></a>
+                                <p><a class="nav-link" href="{% url 'login' %}"><button class="btn btn-success" >Login</button></a></p>
                             </li>
+
+                            {% if user.is_superuser %}
+                            <p><a href="{% url 'listar_usuario' %}" class="btn btn-success">Ver Usuarios</a></p>
+                            <p><a href="{% url 'cadastrar_usuario' %}" class="btn btn-success">Cadastre um novo usuário</a></p>
+                            {% endif %}
+
                             {% if user.is_authenticated %}
-                            <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">cadastre um novo aviso</button></a></p>
-                            <p><a href="{% url 'logout' %}"><button class="btn btn-success" >sair</button></a></p>
+                            <p><a href="{% url 'listar_aviso' %}"><button class="btn btn-success">Editar Avisos</button></a></p>
+                            <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">Cadastrar um novo aviso</button></a></p>
+                            <p><a href="{% url 'logout' %}"><button class="btn btn-success" >Sair</button></a></p>
 
                             {% endif %}
                         
                         </ul>
-                        <form class="d-flex mt-3" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-success" type="submit">Search</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -74,60 +87,17 @@
                     </div>
                 </div>
             {% empty %}
-                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+                <p class="centro"><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
             {% endfor %}
 
            
             
            
         </div>
-
-
-        <!-- <div id="caixaB">
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr>
-                <H3>INFORMAÇÃO 1</H3>
-                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, autem non modi, quod placeat qui ea consequuntur in eos harum est nam obcaecati sapiente repellendus natus! Repellat ipsam fugit provident.</P>
-            </div>
-            
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr> 
-                <H3>INFORMAÇÃO 2</H3>
-                <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem amet eaque mollitia ipsam sint voluptas error, quod, perspiciatis sed nisi id dolorum consequatur fugit repellendus! Doloribus, eius dolorem. Facilis, nihil?</P>
-            </div>
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr>
-                <H3>INFORMAÇÃO 3 </H3>
-                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus laborum animi earum fuga, laboriosam, rerum est natus assumenda fugit reiciendis possimus totam veritatis quod iusto illum modi consectetur ea quibusdam?</P>
-            </div>
-        </div>
-        <div id="caixaC">
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr>
-                <H3>INFORMAÇÃO 5</H3>
-                <P>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo quasi nam laudantium molestias dolore, pariatur suscipit nemo alias laboriosam odio officia quis repudiandae reiciendis harum rem iure consectetur incidunt unde?</P>
-            </div>
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr>
-                <H3>INFORMAÇÃO 6</H3>
-                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus ut recusandae aliquid placeat voluptatem vitae nemo magnam eligendi, veritatis neque modi nulla, consequatur, rem beatae saepe. Facere voluptatibus nulla repellat.</P>
-            </div>
-            <div class="caixas">
-                <img src="{% static 'images.jpg' %}">
-                <hr>
-                <H3>INFORMAÇÃO 7 </H3>
-                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, expedita unde! Assumenda quasi, possimus asperiores dignissimos sed ducimus eius eligendi odio facere commodi itaque iste provident enim deserunt voluptas. Facilis.</P>
-            </div>
-        </div> -->
     </main>
 
     <footer class="footer">
-      <address>Criação e Desenvolvimento: <a href="#">Grupo Farias</a> &copy; 2022 - <a href="#">Desenvolvimento caseiro</a></address>
+      <address>Criação e Desenvolvimento: <a href=" https://instagram.com/info2019.1m?igshid=YmMyMTA2M2Y=">Info 2019.1</a> &copy; 2022</address>
     </footer>
 </body>
 

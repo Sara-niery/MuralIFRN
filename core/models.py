@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
-    nome = models.CharField('Nome', max_length= 100)
+    nome = models.CharField('nome', max_length= 100)
     cargo = models.CharField('cargo', max_length=50)
     
     # class Meta:

@@ -2,9 +2,14 @@ main {
     margin-top: 56px;
     background-image: url();
     background-color: #EEEEEE;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 80px;
+
+}
 footer {
     text-align: center;
     height: 100px;
@@ -51,4 +56,18 @@ footer {
 
 #linha {
     color: #68B92C;
+}
+
+.centro {
+    text-align: center;
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+    color: white;
 }
