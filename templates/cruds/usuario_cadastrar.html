@@ -2,25 +2,34 @@
 {% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuario</title>
     <link rel="stylesheet" type="text/css" href="{% static 'estilo.css' %}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{% static 'forms.css' %}" media="screen" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  </head>
+</head>
+
 <body>
-    <h1>CADASTRO DOS USUARIOS</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form_usuario.as_p }}
-        <p>É um admim?
-            <input type="radio" name="tipo" value="admin" />Sim<br />
-        </p>
-        <p><input type="submit" class="btn btn-verde" value="Cadastrar"/></p>
-    </form>
-    <p><a href="{% url 'listar_usuario' %}" class="btn-voltar">Voltar</a></p>
+    <div class="conteiner fluid text-center">
+
+        <h1>CADASTRO DOS USUARIOS</h1>
+        <div class="">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form_usuario.as_p }}
+                <p>É um admim?
+                    <input type="radio" name="tipo" value="admin" />Sim<br />
+                </p>
+                <p><input type="submit" class="btn btn-verde" value="Cadastrar" /></p>
+            </form>
+        </div>
+        <p><a href="{% url 'listar_usuario' %}" class="btn-voltar">Voltar</a></p>
+    </div>
 </body>
+
 </html>

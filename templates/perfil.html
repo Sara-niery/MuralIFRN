@@ -35,7 +35,7 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                                <p><a href="{% url 'logout' %}"><button >sair</button></a></p>
                             </li>
                             <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
@@ -63,10 +63,31 @@
     </header>
 </header>
 
-<body>
-    <main>
+<body>  <main>
+    <hr id="linha" >
+        <div class="row">
+           
+            {% for aviso in todos_avisos %}
+                <div class="col-12 col-lg-4">
+                    <div class="caixas">
+                        <img src="media/{{aviso.imagem}}" alt="" class="img-fluid">
+                        <hr>
+                        <H3>{{ aviso.titulo }}</H3>
+                        <P>{{aviso.descricao}}</P>
+                        <h5>Responsável: {{ aviso.usuario.nome }}</h5>
+                    </div>
+                </div>
+            {% empty %}
+                <p><b>AINDA NÃO TEMOS AVISOS CADASTRADOS</b></p>
+            {% endfor %}
 
-        <a href="{% url 'logout' %}">sair</a>
+           
+            
+           
+        </div>
+  
+
+        <p><a href="{% url 'logout' %}"><button class="btn btn-success" >sair</button></a></p>
     </main>
     <button><a href="{% url 'cadastrar_aviso'%}">cadastre um novo aviso aqui</a></button>
 
