@@ -36,6 +36,10 @@
         background-color: #4CAF50;
         color: white;
     }
+    .espaco{
+        
+        margin-left: 100px;
+    }
 </style>
 
 <body class="centro">
@@ -53,7 +57,7 @@
         {% csrf_token %}
         <div>
             <p>Titulo: {{ form_aviso.titulo }}</p>
-            <p>Imagem: {{ form_aviso.imagem }}</p>
+            <p class="espaco">Imagem: {{ form_aviso.imagem }}</p>
             <p>Descrição: {{ form_aviso.descricao }}</p>
             <p><input type="submit" class="btn btn-success" value="Cadastrar" />
                 <a href="{% url 'home' %}" class="btn btn-success">Voltar</a>
