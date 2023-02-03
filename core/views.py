@@ -80,7 +80,7 @@ def atualizar_usuario(request, id):
     contexto = {
         "form_usuario": form
     }
-    return render(request, 'cruds/usuario_editar.html', contexto )      
+    return render(request, 'cruds/usuario_cadastrar.html', contexto )      
 
 
 def deletar_usuario(request, id):

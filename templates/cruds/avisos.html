@@ -90,6 +90,7 @@
         {% empty %}
             <p><b>VOCÊ AINDA NÃO CADASTROU NENHUM AVISO</b></p>
         {% endfor %}
+        
     </div>
         <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
         <a href="{% url 'home' %}" type="button" class="btn btn-danger">Voltar para a página inicial</a></p>

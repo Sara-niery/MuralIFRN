@@ -46,8 +46,8 @@
     <h3>Usuários Cadastrados:</h3>
 
     {% for usuario in todos_usuarios %}
-            <p><b>Nome:</b> {{ Usuario.nome }} </p>
-            <p><b>Cargo:</b> {{ Usuario.cargo }}</p>
+            <p><b>Nome:</b> {{ usuario.nome }} </p>
+            <p><b>Cargo:</b> {{ usuario.cargo }}</p>
             <p><a href="{% url 'atualizar_usuario' usuario.id %}" class="btn button button:hover"> Editar </a>
             <a href="{% url 'deletar_usuario' usuario.id %}" type="button" class="btn btn-danger"> Excluir </a></p>
  

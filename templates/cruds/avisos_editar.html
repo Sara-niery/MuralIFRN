@@ -23,7 +23,7 @@
     </header>
     
     <h1>ATUALIZAR</h1>
-    <form method="POST" action="{% url 'atualizar_cliente' cliente.id %}"  enctype="multipart/form-data">
+    <form method="POST" action="{% url 'atualizar_aviso' aviso.id %}"  enctype="multipart/form-data">
         {% csrf_token %}
         {{ form_aviso.as_p }}
         <p><input type="submit"  class="btn btn-verde" value="Atualizar"/></p>
