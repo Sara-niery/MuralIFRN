@@ -41,7 +41,7 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <p><a href="{% url 'logout' %}"><button >sair</button></a></p>
+                                <p><a href="{% url 'logout' %}"><button type="button" class="btn btn-danger" >sair</button></a></p>
                             </li>
                         </ul>
                         <form class="d-flex mt-3" role="search">
@@ -81,7 +81,7 @@
         </div>
   
 
-        <p><a href="{% url 'logout' %}"><button class="btn btn-success" >sair</button></a></p>
+        <p><a href="{% url 'logout' %}"><button type="button" class="btn btn-danger" >sair</button></a></p>
         <p><a href="{% url 'cadastrar_aviso'%}" class="btn btn-success">Cadastre um novo aviso</a>
 
         <a href="{% url 'home' %}"><button class="btn btn-success" >Página Inicial</button></a></p>

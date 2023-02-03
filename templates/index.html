@@ -61,7 +61,7 @@
                             {% if user.is_authenticated %}
                             <p><a href="{% url 'listar_aviso' %}"><button class="btn btn-success">Editar Avisos</button></a></p>
                             <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">Cadastrar um novo aviso</button></a></p>
-                            <p><a href="{% url 'logout' %}"><button class="btn btn-success" >Sair</button></a></p>
+                            <p><a href="{% url 'logout' %}"><button type="button" class="btn btn-danger" >Sair</button></a></p>
 
                             {% endif %}
                         

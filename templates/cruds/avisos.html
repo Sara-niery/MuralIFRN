@@ -54,7 +54,7 @@
                             </li>
                             {% if user.is_authenticated %}
                             <p><a href="{% url 'cadastrar_aviso' %}"><button class="btn btn-success">cadastre um novo aviso</button></a></p>
-                            <p><a href="{% url 'logout' %}"><button class="btn btn-success" >sair</button></a></p>
+                            <p><a href="{% url 'logout' %}"><button type="button" class="btn btn-danger" >sair</button></a></p>
 
                             {% endif %}
                         
@@ -82,7 +82,7 @@
                         <P>{{aviso.descricao}}</P>
                         <h5>Responsável: {{ aviso.usuario.nome }}</h5>
                         <a href="{% url 'atualizar_aviso' aviso.id %}" class="btn button button:hover" value="Editar aviso"><button class="btn btn-success" >Editar</button> </a>
-                        <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> <button class="btn btn-success" >Excluir</button> </a>
+                        <a href="{% url 'deletar_aviso' aviso.id %}" class="btn button"> <button class="btn btn-danger" >Excluir</button> </a>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
         {% endfor %}
     </div>
         <p><a href="{% url 'cadastrar_aviso' %}" class="btn btn-success" value="Cadastrar um novo aviso">Cadastrar um novo aviso</a></p>
-        <a href="{% url 'home' %}" class="btn button button:hover">Voltar para a página inicial</a></p>
+        <a href="{% url 'home' %}" type="button" class="btn btn-danger">Voltar para a página inicial</a></p>
     
     </main>
 </body>

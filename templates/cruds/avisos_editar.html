@@ -27,7 +27,7 @@
         {% csrf_token %}
         {{ form_aviso.as_p }}
         <p><input type="submit"  class="btn btn-verde" value="Atualizar"/></p>
-        <p><a href="{% url 'avisos' %}" class="btn-voltar">Voltar</a></p>
+        <p><a href="{% url 'avisos' %}" type="button" class="btn btn-danger">Voltar</a></p>
 
     </form>
 </body>
